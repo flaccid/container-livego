@@ -37,6 +37,15 @@ spec:
             - name: http-api
               containerPort: 8090
               protocol: TCP
+            - name: http-flv
+              containerPort: 7001
+              protocol: TCP
+            - name: http-hls
+              containerPort: 7002
+              protocol: TCP
+            - name: rtmp
+              containerPort: 1935
+              protocol: TCP
           # TODO: need to work these out
           # livenessProbe:
           #   httpGet:
