@@ -37,14 +37,15 @@ spec:
             - name: http-api
               containerPort: 8090
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /control/get?room=movie
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /control/get?room=movie
-              port: http
+          # TODO: need to work these out
+          # livenessProbe:
+          #   httpGet:
+          #     path: /control/get?room=movie
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /control/get?room=movie
+          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
