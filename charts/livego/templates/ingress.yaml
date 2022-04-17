@@ -1,3 +1,5 @@
+# NOTE: currently only used for flv
+
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "livego.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
