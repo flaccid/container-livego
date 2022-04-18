@@ -1,5 +1,3 @@
-# NOTE: currently only used for flv
-
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "livego.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
@@ -51,7 +49,8 @@ spec:
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}
               service:
-                name: {{ $fullName }}
+                # currently we just expose the flv service
+                name: {{ $fullName }}-http-hls
                 port:
                   number: {{ $svcPort }}
               {{- else }}

@@ -27,6 +27,10 @@ spec:
       serviceAccountName: {{ include "livego.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: {{ include "livego.fullname" . }}-config
+          configMap:
+            name: {{ include "livego.fullname" . }}-config
       containers:
         - name: {{ .Chart.Name }}
           stdin: true
@@ -59,6 +63,10 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: {{ include "livego.fullname" . }}-config
+            mountPath: /app/livego.yaml
+            subPath: livego.yaml
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "livego.fullname" . }}-http-fls
+  name: {{ include "livego.fullname" . }}-http-hls
   labels:
     {{- include "livego.labels" . | nindent 4 }}
 spec:
